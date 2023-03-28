@@ -1,0 +1,1 @@
+(self.webpackChunkrick_and_morty=self.webpackChunkrick_and_morty||[]).push([[606],{606:function(){}}]);
