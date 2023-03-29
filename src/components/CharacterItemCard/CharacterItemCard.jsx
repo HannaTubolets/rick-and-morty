@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import { NavLink, useLocation } from 'react-router-dom';
 import css from 'components/CharacterItemCard/CharacterItemCard';
 
@@ -26,15 +25,5 @@ export const CharacterItemCard = ({ id, name, species, image }) => {
     </li>
   );
 };
-
-// MovieItemCard.propTypes = {
-//   id: PropTypes.number.isRequired,
-//   title: PropTypes.string.isRequired,
-//   poster_path: PropTypes.string,
-//   overview: PropTypes.string,
-//   release_date: PropTypes.string,
-//   vote_average: PropTypes.number,
-//   genres: PropTypes.string,
-// };
 
 export default CharacterItemCard;

@@ -1,12 +1,11 @@
-// import PropTypes from 'prop-types';
 import CharacterItemCard from 'components/CharacterItemCard/CharacterItemCard';
 import css from 'components/CharacterCardList/CharacterCardList';
 
-export const CharacterCardList = ({ character }) => {
-  console.log(character);
+export const CharacterCardList = ({ characters }) => {
+  console.log(characters);
   return (
     <ul className={css.CharacterGallery}>
-      {character.map(({ id, name, species, image }) => (
+      {characters.map(({ id, name, species, image }) => (
         <CharacterItemCard
           key={id}
           id={id}
@@ -18,16 +17,5 @@ export const CharacterCardList = ({ character }) => {
     </ul>
   );
 };
-
-// MovieCardList.propTypes = {
-//   movies: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       title: PropTypes.string.isRequired,
-//       poster_path: PropTypes.string.isRequired,
-//       release_date: PropTypes.string.isRequired,
-//     })
-//   ).isRequired,
-// };
 
 export default CharacterCardList;

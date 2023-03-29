@@ -4,22 +4,23 @@ import CharacterCardList from 'components/CharacterCardList/CharacterCardList';
 import SearchForm from 'components/SearchForm/SearchForm';
 import css from './HomePage.module.css';
 
-export default function HomePage() {
-  const [character, setCharacter] = useState([]);
+export function HomePage() {
+  const [characters, setCharacters] = useState([]);
+
   useEffect(() => {
     getAllCharacters().then(data => {
-      setCharacter(data.results);
-      console.log(data);
+      setCharacters(data);
     });
   }, []);
 
   return (
     <main className={css.Section}>
       <div>
-        <h1>Hello</h1>
         <SearchForm />
-        <CharacterCardList characters={character} />
+        {characters.length > 0 && <CharacterCardList characters={characters} />}
       </div>
     </main>
   );
 }
+
+export default HomePage;

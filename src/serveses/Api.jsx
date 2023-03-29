@@ -1,30 +1,11 @@
 import axios from 'axios';
-// import PropTypes from 'prop-types';
 
-const BASE_URL = 'https://rickandmortyapi.com/api';
+// const BASE_URL = 'https://rickandmortyapi.com/api';
 
-async function fetchCharacter(url = '', config = {}) {
-  const { data } = await axios.get(url, config);
-  return data;
+export async function getAllCharacters() {
+  const response = await axios.get('https://rickandmortyapi.com/api/character');
+  console.log(response.data.results); // add this line
+  return response.data.results;
 }
-
-export function getAllCharacters() {
-  return fetchCharacter(`${BASE_URL}/character`);
-}
-
-// export const getFilmDetails = async movieId => {
-//   const { data } = await axios.get(
-//     `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`
-//   );
-//   return data;
-// };
-
-// export function getCharacter() {
-//   return fetchCharacter(`${BASE_URL}/character/${id}`);
-// }
-
-// export function getFilteredCharacters() {
-//   return fetchCharacter(`${BASE_URL}/character/?name=${name}&status=alive`);
-// }
 
 // console.log(getAllCharacters());
