@@ -6,6 +6,11 @@ import css from './HomePage.module.css';
 
 export function HomePage() {
   const [characters, setCharacters] = useState([]);
+  const [nameFilter, setNameFilter] = useState('');
+
+  const handleFilter = filterData => {
+    if (filterData.key === 'searchBox') setNameFilter(filterData.value);
+  };
 
   useEffect(() => {
     getAllCharacters().then(data => {
@@ -13,11 +18,17 @@ export function HomePage() {
     });
   }, []);
 
+  const filteredCharacters = characters.filter(character => {
+    return character.name.toUpperCase().includes(nameFilter.toUpperCase());
+  });
+
   return (
     <main className={css.Section}>
       <div>
-        <SearchForm />
-        {characters.length > 0 && <CharacterCardList characters={characters} />}
+        <SearchForm handleFilter={handleFilter} />
+        {filteredCharacters.length > 0 && (
+          <CharacterCardList characters={filteredCharacters} />
+        )}
       </div>
     </main>
   );
