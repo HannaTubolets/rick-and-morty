@@ -7,3 +7,12 @@ export async function getAllCharacters() {
   // console.log(response.data.results); // add this line
   return response.data.results;
 }
+
+export async function getCharacterDetails(id) {
+  const response = await axios.get(
+    `https://rickandmortyapi.com/api/character/${id}`
+  );
+  return response.data;
+}
+
+getCharacterDetails(1).then(data => console.log(data));

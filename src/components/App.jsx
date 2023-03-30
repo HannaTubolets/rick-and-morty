@@ -4,7 +4,9 @@ import { lazy, Suspense } from 'react';
 import { Loader } from 'components/Loader/Loader';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
-const CharacterPage = lazy(() => import('../pages/HeroPage/HeroPage'));
+const CharacterPage = lazy(() =>
+  import('../pages/CharacterPage/CharacterPage')
+);
 const Header = lazy(() => import('./Header/Header'));
 
 export const App = () => {

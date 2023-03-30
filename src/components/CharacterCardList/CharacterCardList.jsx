@@ -1,7 +1,7 @@
 import CharacterItemCard from 'components/CharacterItemCard/CharacterItemCard';
 import css from 'components/CharacterCardList/CharacterCardList';
 
-export const CharacterCardList = ({ characters }) => {
+const CharacterCardList = ({ characters }) => {
   console.log(characters);
   return (
     <ul className={css.CharacterGallery}>

@@ -18,6 +18,18 @@ export function HomePage() {
     });
   }, []);
 
+  characters.sort(function (a, b) {
+    const charA = a.name.toUpperCase();
+    const charB = b.name.toUpperCase();
+    if (charA < charB) {
+      return -1;
+    }
+    if (charA > charB) {
+      return 1;
+    }
+    return 0;
+  });
+
   const filteredCharacters = characters.filter(character => {
     return character.name.toUpperCase().includes(nameFilter.toUpperCase());
   });

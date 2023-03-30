@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import css from 'components/CharacterItemCard/CharacterItemCard';
 
-export const CharacterItemCard = ({ id, name, species, image }) => {
+const CharacterItemCard = ({ id, name, species, image }) => {
   const location = useLocation();
 
   return (
@@ -12,14 +12,14 @@ export const CharacterItemCard = ({ id, name, species, image }) => {
         className={css.NavLink}
       >
         <img
-          className={css.CharacterGalleryItemImage}
+          className={css.CharacterItemImage}
           src={image}
           alt={name}
           min-width={'100px'}
         />
         <div>
           <h2 className={css.CharacterName}>{name}</h2>
-          <p>{species}</p>
+          <p className={css.CharacterName}>{species}</p>
         </div>
       </NavLink>
     </li>
