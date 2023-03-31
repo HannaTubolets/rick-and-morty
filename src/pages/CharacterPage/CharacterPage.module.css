@@ -33,7 +33,7 @@
   line-height: 1.2;
   letter-spacing: 0.15px;
   margin-bottom: 48px;
-  color: #8e8e93;
+  color: #6e798c;
 }
 
 .BackBtn {
@@ -50,4 +50,6 @@
 
 .Wrapper {
   border-bottom: 1px solid #979797;
+  padding-bottom: 12px;
+  padding-top: 8px;
 }

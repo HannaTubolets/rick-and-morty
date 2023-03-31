@@ -9,33 +9,18 @@ export default function CharacterPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  let { charactersId } = useParams();
+  let { id } = useParams();
 
   const location = useLocation();
   const locationFrom = location?.state?.from ?? '/';
 
   useEffect(() => {
-    // const oneCharacter = async () => {
-    //   setIsLoading(true);
-    //   try {
-    //     await getCharacterDetails(charactersId).then(data => {
-    //       setCharacters(data);
-    //       console.log(data);
-    //     });
-    //   } catch (error) {
-    //     setError(error);
-    //   } finally {
-    //     setIsLoading(false);
-    //   }
-    // };
-    // oneCharacter();
-
-    if (charactersId) {
+    if (id) {
       const oneCharacter = async () => {
         setIsLoading(true);
         try {
-          const data = await getCharacterDetails(charactersId);
-          console.log(data);
+          const data = await getCharacterDetails(id);
+          console.log(data); //shown character
           setCharacters(data);
         } catch (error) {
           setError(error);
@@ -45,11 +30,11 @@ export default function CharacterPage() {
       };
       oneCharacter();
     }
-  }, [charactersId]);
+  }, [id]);
 
-  console.log(characters);
+  // console.log(characters);
 
-  const { gender, name, status, species, origin, type, id } = characters;
+  const { name } = characters;
 
   return (
     <>
@@ -68,27 +53,27 @@ export default function CharacterPage() {
             />
 
             <div className={css.TxtWrapper}>
-              <h1 className={css.CharacterName}>{name}</h1>
+              <h1 className={css.CharacterName}>{characters.name}</h1>
               <h2 className={css.Info}>Informations</h2>
               <div className={css.Wrapper}>
                 <h3 className={css.TxtOptions}>Gender</h3>
-                <p className={css.TxtInfo}> {gender}</p>
+                <p className={css.TxtInfo}>{characters.gender}</p>
               </div>
               <div className={css.Wrapper}>
                 <h3 className={css.TxtOptions}>Status</h3>
-                <p className={css.TxtInfo}>{status}</p>
+                <p className={css.TxtInfo}>{characters.status}</p>
               </div>
               <div className={css.Wrapper}>
                 <h3 className={css.TxtOptions}>Species </h3>
-                <p>{species}</p>
+                <p>{characters.species}</p>
               </div>
               <div className={css.Wrapper}>
                 <h3 className={css.TxtOptions}>Origin</h3>
-                <p className={css.TxtInfo}>{origin}</p>
+                <p className={css.TxtInfo}>{characters.origin?.name}</p>
               </div>
               <div className={css.Wrapper}>
                 <h3 className={css.TxtOptions}>Type</h3>
-                <p className={css.TxtInfo}>{type}</p>
+                <p className={css.TxtInfo}>{characters.type}</p>
               </div>
             </div>
           </div>
