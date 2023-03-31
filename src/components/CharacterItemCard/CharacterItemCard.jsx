@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import css from 'components/CharacterItemCard/CharacterItemCard';
+import css from './CharacterItemCard.module.css';
 
 const CharacterItemCard = ({ id, name, species, image }) => {
   const location = useLocation();
@@ -15,11 +15,11 @@ const CharacterItemCard = ({ id, name, species, image }) => {
           className={css.CharacterItemImage}
           src={image}
           alt={name}
-          min-width={'100px'}
+          max-width={'240px'}
         />
-        <div>
+        <div className={css.TxtWrapper}>
           <h2 className={css.CharacterName}>{name}</h2>
-          <p className={css.CharacterName}>{species}</p>
+          <p className={css.CharacterSpecies}>{species}</p>
         </div>
       </NavLink>
     </li>

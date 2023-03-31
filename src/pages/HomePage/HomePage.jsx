@@ -36,7 +36,7 @@ export function HomePage() {
 
   return (
     <main className={css.Section}>
-      <div>
+      <div className={css.Container}>
         <SearchForm handleFilter={handleFilter} />
         {filteredCharacters.length > 0 && (
           <CharacterCardList characters={filteredCharacters} />

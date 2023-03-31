@@ -1,5 +1,5 @@
 import CharacterItemCard from 'components/CharacterItemCard/CharacterItemCard';
-import css from 'components/CharacterCardList/CharacterCardList';
+import css from './CharacterCardList.module.css';
 
 const CharacterCardList = ({ characters }) => {
   console.log(characters);

@@ -4,7 +4,7 @@ import { getCharacterDetails } from 'serveses/Api';
 import { Loader } from '../../components/Loader/Loader';
 import css from '../CharacterPage/CharacterPage.module.css';
 
-export default function CharacterPage() {
+export default function CharacterPage(props) {
   const [characters, setCharacters] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -20,6 +20,7 @@ export default function CharacterPage() {
         setIsLoading(true);
         try {
           const data = await getCharacterDetails(characterId);
+          console.log(data); // add this line
           setCharacters(data);
         } catch (error) {
           setError(error);
@@ -30,6 +31,7 @@ export default function CharacterPage() {
       oneCharacter();
     }
   }, [characterId]);
+  console.log(characters);
 
   const { gender, name, status, specie, id, origin, type } = characters;
 

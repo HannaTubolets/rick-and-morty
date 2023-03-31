@@ -20,19 +20,21 @@ export const SearchForm = props => {
   return (
     <>
       <form className={css.searchForm} onSubmit={handleSubmit}>
-        <button className={css.searchFormBtn} type="submit">
-          <img src={searchIcon} alt="search" />
-        </button>
-        <input
-          className={css.searchFormInput}
-          onChange={handleSearch}
-          type="text"
-          value={search}
-          name="searchBox"
-          id="searchBox"
-          placeholder="Filter by name"
-          autoFocus
-        />
+        <div className={css.InputWrapper}>
+          <button className={css.searchFormBtn} type="submit">
+            <img src={searchIcon} alt="search" />
+          </button>
+          <input
+            className={css.searchFormInput}
+            onChange={handleSearch}
+            type="text"
+            value={search}
+            name="searchBox"
+            id="searchBox"
+            placeholder="Filter by name"
+            autoFocus
+          />
+        </div>
       </form>
     </>
   );

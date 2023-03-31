@@ -1,0 +1,16 @@
+.CharacterGallery {
+  max-width: 1020px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 20px;
+
+  /* padding: 0 16px; */
+  /* display: grid;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); */
+}
