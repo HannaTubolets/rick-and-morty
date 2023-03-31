@@ -1,4 +1,5 @@
 import { React } from 'react';
+import { Link } from 'react-router-dom';
 import logoImg from 'images/logo.png';
 import css from './Header.module.css';
 
@@ -7,9 +8,9 @@ export const Header = () => {
     <>
       <header className={css.Header}>
         <div className={css.LogoWrapper}>
-          <a href="/">
+          <Link to="/">
             <img className={css.Logo} src={logoImg} alt="logo" />
-          </a>
+          </Link>
         </div>
       </header>
     </>
