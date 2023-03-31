@@ -7,7 +7,9 @@ export const Header = () => {
     <>
       <header className={css.Header}>
         <div className={css.LogoWrapper}>
-          <img className={css.Logo} src={logoImg} alt="logo" />
+          <a href="/">
+            <img className={css.Logo} src={logoImg} alt="logo" />
+          </a>
         </div>
       </header>
     </>

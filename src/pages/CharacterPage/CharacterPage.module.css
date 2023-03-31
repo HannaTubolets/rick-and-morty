@@ -1,0 +1,53 @@
+.Section {
+  width: 1020xp;
+  margin: 0 auto;
+}
+
+.TxtWrapper {
+  width: 413px;
+  margin: 0 auto;
+}
+
+.CharacterImg {
+  width: 300px;
+  height: 300px;
+  border-radius: 150%;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+.CharacterName {
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 1.17;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 48px;
+  color: #081f32;
+}
+
+.Info {
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 0.15px;
+  margin-bottom: 48px;
+  color: #8e8e93;
+}
+
+.BackBtn {
+  margin-top: 16px;
+}
+
+.TxtOptions {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+  color: #081f32;
+}
+
+.Wrapper {
+  border-bottom: 1px solid #979797;
+}

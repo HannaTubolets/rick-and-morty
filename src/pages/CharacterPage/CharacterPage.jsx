@@ -2,25 +2,40 @@ import { useState, useEffect } from 'react';
 import { useParams, Outlet, useLocation, NavLink } from 'react-router-dom';
 import { getCharacterDetails } from 'serveses/Api';
 import { Loader } from '../../components/Loader/Loader';
-import css from '../CharacterPage/CharacterPage.module.css';
+import css from './CharacterPage.module.css';
 
-export default function CharacterPage(props) {
+export default function CharacterPage() {
   const [characters, setCharacters] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  let { characterId } = useParams();
+  let { charactersId } = useParams();
 
   const location = useLocation();
   const locationFrom = location?.state?.from ?? '/';
 
   useEffect(() => {
-    if (characterId) {
+    // const oneCharacter = async () => {
+    //   setIsLoading(true);
+    //   try {
+    //     await getCharacterDetails(charactersId).then(data => {
+    //       setCharacters(data);
+    //       console.log(data);
+    //     });
+    //   } catch (error) {
+    //     setError(error);
+    //   } finally {
+    //     setIsLoading(false);
+    //   }
+    // };
+    // oneCharacter();
+
+    if (charactersId) {
       const oneCharacter = async () => {
         setIsLoading(true);
         try {
-          const data = await getCharacterDetails(characterId);
-          console.log(data); // add this line
+          const data = await getCharacterDetails(charactersId);
+          console.log(data);
           setCharacters(data);
         } catch (error) {
           setError(error);
@@ -30,49 +45,55 @@ export default function CharacterPage(props) {
       };
       oneCharacter();
     }
-  }, [characterId]);
+  }, [charactersId]);
+
   console.log(characters);
 
-  const { gender, name, status, specie, id, origin, type } = characters;
+  const { gender, name, status, species, origin, type, id } = characters;
 
   return (
     <>
-      <NavLink to={locationFrom} className={css.BackBtn}>
-        👈 BACK
-      </NavLink>
-      {isLoading && <Loader />}
-      {error && <h2>Sory, there is nothing 🙁, try again</h2>}
-      {!error && (
-        <section className={css.Section}>
-          <img
-            className={css.CharacterImg}
-            src={`https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`}
-            alt={name}
-            width={'240px'}
-          />
+      <main className={css.Container}>
+        <NavLink to={locationFrom} className={css.BackBtn}>
+          ⬅️ GO BACK
+        </NavLink>
+        {isLoading && <Loader />}
+        {!error && (
+          <div className={css.Section}>
+            <img
+              className={css.CharacterImg}
+              src={`https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`}
+              alt={name}
+              width={'240px'}
+            />
 
-          <div className={css.Container}>
-            <h1 className={css.CharacterName}>{name}</h1>
-            <h2>Informations</h2>
-            <h3>
-              Gender
-              <span className={css.Gender}> {gender}</span>
-            </h3>
-            <h3>Status</h3>
-            <p>{status}</p>
-            <h3>Specie </h3>
-            {specie ? (
-              <p className={css.Txt}>{specie}</p>
-            ) : (
-              <p className={css.Txt}>No specie</p>
-            )}
-            <h3>Origin</h3>
-            <p>{origin}</p>
-            <h3>Type</h3>
-            <p>{type}</p>
+            <div className={css.TxtWrapper}>
+              <h1 className={css.CharacterName}>{name}</h1>
+              <h2 className={css.Info}>Informations</h2>
+              <div className={css.Wrapper}>
+                <h3 className={css.TxtOptions}>Gender</h3>
+                <p className={css.TxtInfo}> {gender}</p>
+              </div>
+              <div className={css.Wrapper}>
+                <h3 className={css.TxtOptions}>Status</h3>
+                <p className={css.TxtInfo}>{status}</p>
+              </div>
+              <div className={css.Wrapper}>
+                <h3 className={css.TxtOptions}>Species </h3>
+                <p>{species}</p>
+              </div>
+              <div className={css.Wrapper}>
+                <h3 className={css.TxtOptions}>Origin</h3>
+                <p className={css.TxtInfo}>{origin}</p>
+              </div>
+              <div className={css.Wrapper}>
+                <h3 className={css.TxtOptions}>Type</h3>
+                <p className={css.TxtInfo}>{type}</p>
+              </div>
+            </div>
           </div>
-        </section>
-      )}
+        )}
+      </main>
 
       <Outlet />
     </>
