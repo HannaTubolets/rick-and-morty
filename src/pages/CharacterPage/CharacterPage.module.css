@@ -3,8 +3,12 @@
   margin: 0 auto;
 }
 
+.Container {
+  margin-top: 32px;
+}
+
 .TxtWrapper {
-  width: 413px;
+  max-width: 413px;
   margin: 0 auto;
 }
 
@@ -37,7 +41,8 @@
 }
 
 .BackBtn {
-  margin-top: 16px;
+  margin-top: 32px;
+  margin-left: 16px;
 }
 
 .TxtOptions {
