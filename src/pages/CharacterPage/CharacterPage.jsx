@@ -73,7 +73,11 @@ export default function CharacterPage() {
               </div>
               <div className={css.Wrapper}>
                 <h3 className={css.TxtOptions}>Type</h3>
-                <p className={css.TxtInfo}>{characters.type}</p>
+                {characters.type ? (
+                  <p className={css.TxtInfo}>{characters.type}</p>
+                ) : (
+                  <p className={css.TxtInfo}>No info</p>
+                )}
               </div>
             </div>
           </div>

@@ -2,23 +2,27 @@ import axios from 'axios';
 
 const BASE_URL = 'https://rickandmortyapi.com/api';
 
-export async function getAllCharacters() {
-  const response = await axios.get(
-    `${BASE_URL}/character`
-    // env variables
-    // `${process.env.REACT_APP__API_DOMAIN}/character`
-  );
-  // console.log(response.data.results); // add this line
-  return response.data.results;
-}
-
 export async function getCharacterDetails(id) {
-  const response = await axios.get(
-    `${BASE_URL}/character/${id}`
-    // `${process.env.REACT_APP__API_DOMAIN}/character//${id}`
-  );
-  // console.log(response.data); // add this line to check the data
+  const response = await axios.get(`${BASE_URL}/character/${id}`);
+
   return response.data;
 }
 
-// getCharacterDetails(1).then(data => console.log(data));
+export async function getAllCharacters() {
+  // const charactersPerPage = 20;
+  let allCharacters = [];
+  let totalPages = 1;
+  let currentPage = 1;
+
+  while (currentPage <= totalPages) {
+    const response = await fetch(`${BASE_URL}/character/?page=${currentPage}`);
+    const { info, results } = await response.json();
+    allCharacters = [...allCharacters, ...results];
+    totalPages = info.pages;
+    currentPage++;
+  }
+
+  return allCharacters;
+}
+
+getAllCharacters().then(characters => console.log(characters));
